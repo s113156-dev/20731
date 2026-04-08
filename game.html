@@ -1,0 +1,31 @@
+function resetGame() {
+    // 重設分數與生命
+    score = 0;
+    lives = 3;
+
+    // 重設球的位置與速度
+    x = canvas.width / 2;
+    y = canvas.height - 30;
+    dx = 3;
+    dy = -3;
+
+    // 重設擋板位置
+    paddleX = (canvas.width - paddleWidth) / 2;
+
+    // 重設所有磚塊為顯示狀態 (status = 1)
+    for(let c=0; c<brickColumnCount; c++) {
+        for(let r=0; r<brickRowCount; r++) {
+            bricks[c][r].status = 1;
+        }
+    }
+}
+
+else if(e.key == "r" || e.key == "R") resetGame(); // 改這裡
+if(score == brickRowCount * brickColumnCount) {
+    alert("太強了！你贏了！");
+    resetGame(); // 改這裡
+}
+if(!lives) {
+    alert("遊戲結束！最終分數：" + score);
+    resetGame(); // 改這裡
+}
